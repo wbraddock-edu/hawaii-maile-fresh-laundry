@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Maile Fresh Laundry — Waipahu, Oahu</title>
+  <meta name="description" content="Maile Fresh Laundry — Clean clothes, breezy island vibes. Waipahu, Oahu Hawaii." />
+  <meta property="og:title" content="Admin Dashboard | Maile Fresh Laundry" />
+  <meta property="og:image" content="https://picsum.photos/1200/630?random=1001" />
+  <link rel="stylesheet" href="css/style.css" />
+  
+</head>
+<body>
+  <!-- ADMIN LOGIN -->
+  <div class="admin-login" id="adminLoginSection">
+    <div class="admin-login-card">
+      <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;">
+        <circle cx="20" cy="20" r="20" fill="#1B6CA8"/>
+        <rect x="13" y="10" width="14" height="20" rx="3" fill="white" opacity="0.9"/>
+        <circle cx="27" cy="27" r="7" fill="#AED6F1" stroke="white" stroke-width="2"/>
+        <path d="M24 27l2 2 4-4" stroke="#1B6CA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>Admin Dashboard</h1>
+      <p>Maile Fresh Laundry — Staff Access Only</p>
+      <form id="adminLoginForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password" />
+          <p id="loginError">Incorrect password. Please try again.</p>
+        </div>
+        <button type="submit" class="btn-login" onclick="adminLogin()">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-layout" id="dashboardSection" style="display:none;">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-brand">🌀 Maile Fresh Admin</div>
+      <div class="admin-nav-link active">📊 Dashboard</div>
+      <div class="admin-nav-link">📅 Bookings</div>
+      <div class="admin-nav-link">💬 Messages</div>
+      <div class="admin-nav-link">🧺 Services</div>
+      <div class="admin-nav-link">📝 Blog Posts</div>
+      <div class="admin-nav-link">⭐ Reviews</div>
+      <div class="admin-nav-link" style="margin-top:auto;" onclick="adminLogout()">🚪 Sign Out</div>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1 class="admin-title">Dashboard Overview</h1>
+        <span style="font-size:0.88rem;color:var(--text-muted);">Monday, June 29, 2024</span>
+      </div>
+
+      <div class="stat-cards">
+        <div class="stat-card"><div class="stat-label">Today's Bookings</div><div class="stat-value">11</div><div class="stat-change">↑ 3 from yesterday</div></div>
+        <div class="stat-card"><div class="stat-label">Pending Drop-offs</div><div class="stat-value">7</div><div class="stat-change">Due by 6 PM</div></div>
+        <div class="stat-card"><div class="stat-label">New Messages</div><div class="stat-value">4</div><div class="stat-change">2 unread</div></div>
+        <div class="stat-card"><div class="stat-label">This Week Revenue</div><div class="stat-value">$1,847</div><div class="stat-change">↑ 12% vs last week</div></div>
+      </div>
+
+      <!-- PENDING BOOKINGS -->
+      <div class="admin-table-section">
+        <div class="admin-table-header">
+          <h3>📅 Pending Bookings</h3>
+          <span style="font-size:0.82rem;color:var(--primary);cursor:pointer;">View All →</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead><tr><th>Customer</th><th>Service</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Nalani K.</td><td>Wash &amp; Fold (10 lbs)</td><td>Jun 29</td><td>8:00 AM</td><td><span class="status-badge status-confirmed">Confirmed</span></td></tr>
+              <tr><td>Marcus T.</td><td>Rush Wash &amp; Fold</td><td>Jun 29</td><td>9:00 AM</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+              <tr><td>Kenji H.</td><td>Dry Cleaning (3 items)</td><td>Jun 29</td><td>10:00 AM</td><td><span class="status-badge status-confirmed">Confirmed</span></td></tr>
+              <tr><td>Sandra A.</td><td>Alterations (hem)</td><td>Jun 30</td><td>9:00 AM</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+              <tr><td>Danny L.</td><td>Wash &amp; Fold (15 lbs)</td><td>Jun 30</td><td>12:00 PM</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+              <tr><td>Tina M.</td><td>Dry Cleaning (2 items)</td><td>Jul 1</td><td>10:00 AM</td><td><span class="status-badge status-confirmed">Confirmed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- INQUIRY MESSAGES -->
+      <div class="admin-table-section">
+        <div class="admin-table-header">
+          <h3>💬 Recent Inquiries</h3>
+          <span style="font-size:0.82rem;color:var(--primary);cursor:pointer;">View All →</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead><tr><th>From</th><th>Phone</th><th>Message</th><th>Received</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Lori F.</td><td>(808) 555-0211</td><td>How much for a king-size comforter wash?</td><td>Today 7:42 AM</td><td><span class="status-badge status-new">New</span></td></tr>
+              <tr><td>Ana K.</td><td>(808) 555-0344</td><td>Do you offer pickup and delivery?</td><td>Today 8:15 AM</td><td><span class="status-badge status-new">New</span></td></tr>
+              <tr><td>Peter K.</td><td>(808) 555-0189</td><td>Is the kiosk card compatible with Apple Pay?</td><td>Yesterday</td><td><span class="status-badge status-confirmed">Replied</span></td></tr>
+              <tr><td>Sarah M.</td><td>(808) 555-0422</td><td>Pricing for wedding dress dry cleaning?</td><td>Yesterday</td><td><span class="status-badge status-confirmed">Replied</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+
+  <!-- Powered by Design Holistically -->
+  <footer style="background:#111;color:#aaa;text-align:center;padding:1.5rem;font-size:0.85rem;font-family:sans-serif;">
+    <p>&copy; 2024. Powered by <a href="https://designholistically.com" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">Design Holistically</a>. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

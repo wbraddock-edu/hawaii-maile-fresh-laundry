@@ -967,3 +967,8 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
   .step-label { display: none; }
 }
 @media (min-width: 768px) { .hamburger { display: none; } }
+
+.hero h1, .hero p, .hero-content, .hero .eyebrow-label, .hero .tag { color: #fff !important; }
+
+[data-theme="dark"] .hero { background: transparent !important; }
+[data-theme="dark"] .hero-bg img { opacity: 1 !important; }
